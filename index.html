@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample Restaurant Menu | MenuAccess</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Leave room for the floating voice button. */
+    body {
+      padding-bottom: 130px;
+    }
+
+    #voiceButton {
+      position: fixed;
+      right: 18px;
+      bottom: 24px;
+      z-index: 1100;
+
+      width: 120px;
+      min-height: 100px;
+      padding: 14px;
+
+      background: #123c43;
+      color: white;
+      border: 3px solid white;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: bold;
+
+      cursor: pointer;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #voiceButton span {
+      display: block;
+    }
+
+    #voiceButton[aria-pressed="true"] {
+      background: #8b2525;
+    }
+
+    #voiceButton:focus-visible,
+    #preferenceForm input:focus-visible,
+    #preferenceForm button:focus-visible {
+      outline: 4px solid #b34b00;
+      outline-offset: 4px;
+    }
+
+    #voiceButton:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    #preferenceForm label {
+      display: block;
+      font-weight: bold;
+    }
+
+    #preferenceInput,
+    #preferenceForm button {
+      width: 100%;
+      min-height: 60px;
+      padding: 14px;
+      margin: 8px 0;
+      font: inherit;
+      border: 2px solid #123c43;
+      border-radius: 10px;
+    }
+
+    #preferenceForm button {
+      background: #123c43;
+      color: white;
+      cursor: pointer;
+    }
+
+    #recommendations:focus {
+      outline: 3px solid #b34b00;
+      outline-offset: 4px;
+    }
+    #speakButton,
+    #pauseButton {
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px 30px;
+      min-height: 80px;
+      width: 100%;
+      margin-bottom: 14px;
+      border: 2px solid #123c43;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    #speakButton {
+      background: white;
+      color: #123c43;
+    }
+
+    #pauseButton {
+      background: white;
+      color: #123c43;
+    }
+
+    #speakButton:focus-visible,
+    #pauseButton:focus-visible {
+      outline: 4px solid #b34b00;
+      outline-offset: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .reading-controls {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #f7f8f6;
+      padding: 12px 0;
+      border-bottom: 2px solid #d4dcda;
+    }
+
+    #speechStatus {
+      margin: 0;
+    }
+
+    #speechStatus:empty {
+      display: none;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #17212b;
+      background: #f7f8f6;
+    }
+
+    header, main, footer {
+      max-width: 760px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      background: #123c43;
+      color: white;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { border-bottom: 2px solid #24777b; padding-bottom: 6px; }
+
+    nav a {
+      display: inline-block;
+      margin: 5px 14px 5px 0;
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .dish {
+      background: white;
+      border: 1px solid #d4dcda;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .dish h3 { margin: 0 0 4px; }
+    .dish p { margin: 5px 0; }
+    .price { font-weight: bold; }
+
+    a:focus {
+      outline: 3px solid #f9bd48;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <main id="content">
+    <div class="reading-controls">
+      <button id="speakButton" type="button">Read Menu</button>
+      <button id="pauseButton" type="button">Pause Reading</button>
+      <p id="speechStatus" role="status"></p>
+    </div>
+    
+    <form id="preferenceForm">
+      <label for="preferenceInput">
+        Your food preference
+      </label>
+
+      <input
+        id="preferenceInput"
+        type="text"
+        placeholder="For example: chicken"
+        required
+      >
+
+      <button type="submit">Find Dishes</button>
+    </form>
+
+    <p id="voiceHelp">
+      Hold the voice button to speak and release to finish.
+      Keyboard and screen-reader users can activate it
+      once to start and again to finish.
+      Your browser may use an online service to process speech.
+    </p>
+
+    <p id="assistantStatus" role="status"></p>
+
+    <div id="recommendations" tabindex="-1"></div>
+  </section>
+
+  <button
+    id="voiceButton"
+    type="button"
+    aria-label="Voice input. Hold to speak, or activate to start and stop."
+    aria-describedby="voiceHelp"
+    aria-pressed="false"
+  >
+    <span aria-hidden="true">🎤</span>
+    <span id="voiceLabel">Hold to speak</span>
+  </button>
+  
+  <header>
+    <h1>Sample Restaurant Menu</h1>
+    <p>MenuAccess demonstration · Sample items and prices</p>
+    <nav aria-label="Menu sections">
+    <a href="#soups">Soups</a>
+    <a href="#stir-fry">Stir-Fry</a>
+    <a href="#rice-bowls">Rice Bowls</a>
+    <a href="#shareables">Shareables and Sides</a>
+    <a href="#bao">Bao</a>
+    <a href="#kids">Children's Menu</a>
+    <a href="#sweets">Sweets</a>
+    <a href="#help">Need assistance?</a>
+  </nav>
+  </header>
+
+  <section aria-labelledby="mains">
+    <h2 id="mains">Restaurant Menu</h2>
+
+    <p>
+      Prices are listed in Canadian dollars.
+      Mild and medium spice levels follow the original menu.
+      Gluten-free, vegetarian, and vegan labels are supplied
+      by the original menu.
+      Please confirm ingredients, dietary suitability,
+      and cross-contact risks with restaurant staff.
+    </p>
+
+    <section aria-labelledby="soups">
+      <h2 id="soups">Soups and Noodle Soups</h2>
+
+      <article class="dish">
+        <h3>Can You Tantan?</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          A mildly spicy ramen noodle soup with ground chicken,
+          pickled daikon radish, bok choy, scallions, and chilies
+          in broth. The bowl combines noodles and chicken with
+          leafy vegetables and pickled radish.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>U-Don Good</h3>
+        <p class="price">Price: $15 CAD</p>
+        <p>
+          Udon noodles in vegetable broth with spicy tofu,
+          mushrooms, eggplant, and bamboo shoots.
+          This plant-based noodle soup combines tofu with
+          several vegetables in a mildly spicy broth-based dish.
+        </p>
+        <p>Marked vegan on the original menu. Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Shanghai Moon</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          A broth-based soup with Shanghai noodles,
+          pork dumplings, mushrooms, and gai lan,
+          also known as Chinese broccoli.
+          Crispy chicken skins add a contrasting texture.
+          This dish includes both pork and chicken.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Spicy Beef Ramen</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          Ramen noodles served in spicy broth with beef brisket,
+          gai lan, and corn. The beef and noodles are accompanied
+          by leafy Chinese broccoli and kernels of corn.
+        </p>
+        <p>Spice level: medium.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Sho-Me the Ramen</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          Ramen noodles in miso broth with sliced char siu pork,
+          mushrooms, and bok choy. Miso provides a savoury
+          fermented-soybean base for the noodles,
+          sliced pork, and vegetables.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Spicy Seafood Soup</h3>
+        <p class="price">Price: $17 CAD</p>
+        <p>
+          Rice noodles in laksa coconut broth with mussels,
+          bay scallops, and tiger shrimp. Gai lan,
+          scallions, cilantro, and lotus root chips
+          accompany the seafood. The coconut-based broth
+          is paired with a mild spice level.
+        </p>
+        <p>
+          Marked gluten-free on the original menu.
+          Spice level: mild.
+          Includes shellfish.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>The Hop Bop</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          Rice noodles with barbecue pulled pork,
+          lemongrass, bean sprouts, and Thai basil,
+          served in shrimp paste broth.
+          This soup combines pork with a seafood-based
+          broth and aromatic herbs.
+        </p>
+        <p>Spice level: mild. Includes shrimp paste.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="stir-fry">
+      <h2 id="stir-fry">Stir-Fry</h2>
+
+      <article class="dish">
+        <h3>Spicy Beef Stir Fry</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          A beef stir-fry with rice noodles, mushrooms,
+          chilies, cashews, scallions, and sesame seeds.
+          This dish brings together beef, noodles,
+          vegetables, and nut and seed toppings.
+        </p>
+        <p>
+          Spice level: medium.
+          The dish name specifies beef, although beef is not
+          repeated in the original ingredient list.
+          Please confirm the ingredients with staff.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Seafood Stir Fry</h3>
+        <p class="price">Price: $17 CAD</p>
+        <p>
+          Udon noodles stir-fried with tiger shrimp,
+          mussels, scallops, and seasonal vegetables
+          in spicy hoisin sauce.
+          This noodle dish contains a mixture of shellfish
+          rather than a single seafood ingredient.
+        </p>
+        <p>Spice level: mild. Includes shellfish.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Chicken and Veggie Stir Fry</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          Shanghai noodles with chicken, cauliflower,
+          carrots, onions, peppers, and broccoli,
+          prepared with spicy hoisin sauce and cashews.
+          This is a chicken noodle dish with a varied
+          vegetable selection and a cashew topping.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Pad Thai</h3>
+        <p class="price">Price: $17 CAD</p>
+        <p>
+          Rice noodles with chicken, shrimp, fried tofu,
+          egg, and bean sprouts, accompanied by cashews,
+          scallions, and coriander.
+          This dish includes several protein ingredients:
+          chicken, seafood, tofu, and egg.
+        </p>
+        <p>
+          Marked gluten-free on the original menu.
+          Includes shrimp, egg, and cashews.
+        </p>
+      </article>
+    </section>
+
+    <section aria-labelledby="rice-bowls">
+      <h2 id="rice-bowls">Rice Bowls</h2>
+
+      <article class="dish">
+        <h3>Jungle Curry</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          A ground chicken curry bowl served with rice,
+          cabbage slaw, corn, and bamboo shoots.
+          Thai basil and makrut lime leaf,
+          listed as kaffir lime leaf on the original menu,
+          provide aromatic herb and citrus notes.
+        </p>
+        <p>
+          Marked gluten-free on the original menu.
+          Spice level: mild.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Bibim and Bop</h3>
+        <p class="price">Price: $15.50 CAD</p>
+        <p>
+          A rice bowl with a fried egg, spicy tofu,
+          mushrooms, carrots, bean sprouts, gai lan,
+          and radish. Gochujang, a Korean chili paste,
+          and sesame oil accompany the vegetables,
+          tofu, and egg.
+        </p>
+        <p>
+          Marked vegetarian on the original menu.
+          Spice level: mild.
+          Includes egg and sesame oil.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>General Tao Chicken</h3>
+        <p class="price">Price: $16 CAD</p>
+        <p>
+          Deep-fried chicken served over rice with
+          cauliflower, broccoli, carrots, and peppers.
+          Sweet chili hoisin sauce accompanies the
+          fried chicken and vegetables.
+          A choice for someone seeking chicken with rice
+          rather than a noodle dish.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Japengo</h3>
+        <p class="price">Price: $15.50 CAD</p>
+        <p>
+          A plant-based rice bowl with spicy tofu,
+          Japanese eggplant, and bok choy,
+          accompanied by black bean garlic sauce
+          and fried shallots.
+          The dish combines tofu and vegetables
+          with a savoury garlic-based sauce.
+        </p>
+        <p>Marked vegan on the original menu. Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Beef Rendang</h3>
+        <p class="price">Price: $17 CAD</p>
+        <p>
+          Slow-braised beef in a spicy coconut curry sauce,
+          served with rice, broccoli, and fried shallots.
+          This dish uses braised beef rather than fried chicken
+          or sliced pork, with coconut curry as its sauce.
+        </p>
+        <p>Spice level: mild on the original menu.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="shareables">
+      <h2 id="shareables">Shareables and Sides</h2>
+
+      <article class="dish">
+        <h3>Deep Fried Sticky Ribs</h3>
+        <p class="price">Price: $14 CAD</p>
+        <p>
+          Deep-fried baby back pork ribs with barbecue sauce,
+          scallions, and toasted sesame.
+          A pork sharing dish finished with a sticky sauce
+          and sesame and scallion toppings.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Popcorn Chicken</h3>
+        <p class="price">Price: $13 CAD</p>
+        <p>
+          Crispy fried chicken pieces served with
+          chili plum sauce. A chicken sharing dish
+          without rice or noodles listed as part
+          of the serving.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Crispy Eggplants</h3>
+        <p class="price">Price: $12 CAD for 8 pieces</p>
+        <p>
+          Eight pieces of battered eggplant accompanied
+          by togarashi spice, cashews, and sweet-and-sour sauce.
+          This vegetable sharing dish combines battered
+          eggplant with a tangy sauce and cashews.
+        </p>
+        <p>Marked vegetarian on the original menu. Includes cashews.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Pan Fried Pork Gyoza</h3>
+        <p class="price">Price: $12 CAD for 8 pieces</p>
+        <p>
+          Eight pan-fried dumplings filled with pork
+          and vegetables, served with ponzu citrus sauce.
+          A dumpling option with a meat-and-vegetable filling
+          and a citrus-based accompanying sauce.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>French Fries</h3>
+        <p class="price">Price: $10 CAD</p>
+        <p>
+          A serving of French fries.
+          The original menu does not specify the portion size,
+          seasoning, or accompanying sauces.
+          Ask staff for those details.
+        </p>
+        <p>Marked vegetarian on the original menu.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Side of Fries</h3>
+        <p class="price">Price: $6 CAD</p>
+        <p>
+          French fries offered as a side dish.
+          The original menu lists this separately
+          from the regular French fries serving.
+          Ask staff about the portion size and available sauces.
+        </p>
+        <p>Marked vegetarian on the original menu.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Vegetable Spring Rolls</h3>
+        <p class="price">Price: $2.50 CAD for 2 pieces</p>
+        <p>
+          Two vegetable spring rolls.
+          The original menu does not identify
+          the individual vegetables, wrapper ingredients,
+          or accompanying sauce.
+          Ask staff for the filling and preparation details.
+        </p>
+        <p>Marked vegetarian on the original menu.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="bao">
+      <h2 id="bao">Bao — Steamed Buns</h2>
+
+      <article class="dish">
+        <h3>General Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun filled with fried chicken,
+          pickles, togarashi mayonnaise, cilantro,
+          and sesame seeds.
+          This chicken bao combines a soft bun
+          with fried chicken and pickled vegetables.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Take a Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun filled with beef brisket,
+          pickled vegetables, house barbecue sauce,
+          cilantro, and sesame seeds.
+          A beef option with a barbecue sauce
+          and pickled vegetable filling.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>BBQ Pork Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun filled with barbecue pulled pork,
+          pickled vegetables, house barbecue sauce,
+          cilantro, and sesame seeds.
+          The pork is served pulled rather than sliced.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>King Cole Duck Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun with pulled duck,
+          pickled red onions, orange and sambal mayonnaise,
+          cilantro, and sesame seeds.
+          Orange and chili-based sambal mayonnaise
+          accompany the duck and pickled onions.
+        </p>
+        <p>Spice level: mild.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Shrimp Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun filled with battered shrimp,
+          coleslaw, togarashi mayonnaise, cilantro,
+          and black and white sesame seeds.
+          This seafood bao combines battered shrimp
+          with a cabbage-based slaw.
+        </p>
+        <p>Spice level: mild. Includes shrimp.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Curtsy Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun with mushrooms, pickles,
+          fried shallots, house barbecue sauce,
+          cilantro, and sesame seeds.
+          This plant-based bao uses mushrooms
+          as its main filling.
+        </p>
+        <p>Marked vegan on the original menu.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Eggplant Bao</h3>
+        <p class="price">Price: $6.50 CAD</p>
+        <p>
+          A steamed bun filled with battered eggplant,
+          pickles, fried shallots, togarashi mayonnaise,
+          cilantro, and sesame seeds.
+          This vegetable bao includes mayonnaise,
+          unlike the mushroom-based Curtsy Bao.
+        </p>
+        <p>Marked vegetarian on the original menu. Spice level: mild.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="kids">
+      <h2 id="kids">Children's Menu</h2>
+
+      <article class="dish">
+        <h3>Chicken Bites</h3>
+        <p class="price">Price: $10 CAD</p>
+        <p>
+          Crispy fried chicken served with French fries
+          and plum sauce.
+          A children's meal combining chicken,
+          a potato side, and an accompanying sauce.
+        </p>
+      </article>
+
+      <article class="dish">
+        <h3>Ramen Bowl</h3>
+        <p class="price">Price: $10 CAD</p>
+        <p>
+          A children's ramen noodle bowl with beef brisket
+          in pork broth.
+          Although the meat topping is beef,
+          the soup base contains pork.
+        </p>
+      </article>
+    </section>
+
+    <section aria-labelledby="sweets">
+      <h2 id="sweets">Sweets</h2>
+
+      <article class="dish">
+        <h3>Red Bean Paste Sesame Balls</h3>
+        <p class="price">Price: $8 CAD for 4 pieces</p>
+        <p>
+          Four sesame balls with a red bean paste filling.
+          This dessert combines a sesame exterior
+          with a sweet bean-based centre.
+          Ask staff about the dough ingredients
+          and preparation method.
+        </p>
+        <p>Includes sesame.</p>
+      </article>
+
+      <article class="dish">
+        <h3>Ice Cream</h3>
+        <p class="price">Price: $4 CAD</p>
+        <p>
+          Ice cream. Ask your server about
+          the available flavours, serving size,
+          ingredients, and toppings.
+          These details are not specified on the original menu.
+        </p>
+      </article>
+    </section>
+  </section>
+  <footer>
+    <p>Demonstration menu. Confirm all items and prices
+       with the restaurant before use.</p>
+  </footer>
+  <script src="sounds.js"></script>
+  <script src="preferences.js"></script>
+</body>
+</html>

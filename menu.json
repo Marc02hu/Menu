@@ -1,0 +1,729 @@
+[
+  {
+    "id": "can-you-tantan",
+    "name": "Can You Tantan?",
+    "category": "Soups",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "ramen noodles",
+      "ground chicken",
+      "pickled daikon",
+      "bok choy",
+      "scallions",
+      "chilies",
+      "broth"
+    ],
+    "description": "Ramen noodles in broth with ground chicken, pickled daikon radish, bok choy, scallions and chilies. The original menu marks this dish as mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "u-don-good",
+    "name": "U-Don Good",
+    "category": "Soups",
+    "price": 15,
+    "currency": "CAD",
+    "ingredients": [
+      "udon noodles",
+      "spicy tofu",
+      "mushrooms",
+      "eggplant",
+      "bamboo shoots",
+      "vegetable broth"
+    ],
+    "description": "Udon noodle soup with spicy tofu, mushrooms, eggplant and bamboo shoots in vegetable broth. Marked vegan and mildly spicy on the original menu.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "vegan"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "shanghai-moon",
+    "name": "Shanghai Moon",
+    "category": "Soups",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "Shanghai noodles",
+      "pork dumplings",
+      "mushrooms",
+      "gai lan",
+      "crispy chicken skins",
+      "broth"
+    ],
+    "description": "Shanghai noodles and pork dumplings in broth with mushrooms, gai lan and crispy chicken skins. This soup includes pork and chicken; the type of broth is not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "spicy-beef-ramen",
+    "name": "Spicy Beef Ramen",
+    "category": "Soups",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "ramen noodles",
+      "beef brisket",
+      "gai lan",
+      "corn",
+      "spicy broth"
+    ],
+    "description": "Ramen noodles with beef brisket, gai lan and corn in spicy broth. The original menu marks this dish as medium spice.",
+    "spiceLevel": "medium",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "sho-me-the-ramen",
+    "name": "Sho-Me the Ramen",
+    "category": "Soups",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "ramen noodles",
+      "sliced char siu pork",
+      "mushrooms",
+      "bok choy",
+      "miso broth"
+    ],
+    "description": "Ramen noodles in miso broth with sliced char siu pork, mushrooms and bok choy. No spice rating is shown on the original menu.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "spicy-seafood-soup",
+    "name": "Spicy Seafood Soup",
+    "category": "Soups",
+    "price": 17,
+    "currency": "CAD",
+    "ingredients": [
+      "rice noodles",
+      "mussels",
+      "bay scallops",
+      "tiger shrimp",
+      "gai lan",
+      "scallions",
+      "lotus root chips",
+      "cilantro",
+      "laksa coconut broth"
+    ],
+    "description": "Rice noodles in laksa coconut broth with mussels, bay scallops and tiger shrimp, accompanied by gai lan, scallions, lotus root chips and cilantro. Marked gluten-free and mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "gluten-free"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "the-hop-bop",
+    "name": "The Hop Bop",
+    "category": "Soups",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "rice noodles",
+      "BBQ pulled pork",
+      "lemongrass",
+      "bean sprouts",
+      "Thai basil",
+      "shrimp paste broth"
+    ],
+    "description": "Rice noodle soup with barbecue pulled pork, lemongrass, bean sprouts and Thai basil in shrimp paste broth. This pork dish also includes shrimp paste.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "spicy-beef-stir-fry",
+    "name": "Spicy Beef Stir Fry",
+    "category": "Stir-Fry",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "beef",
+      "rice noodles",
+      "mushrooms",
+      "chilies",
+      "cashews",
+      "scallions",
+      "sesame seeds"
+    ],
+    "description": "A beef stir-fry with rice noodles, mushrooms, chilies, cashews, scallions and sesame seeds. Marked medium spice. The type of sauce is not listed.",
+    "spiceLevel": "medium",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": [
+      "Beef is explicitly named in the dish title but omitted from its printed ingredient line; included here based on the title. Confirm with restaurant."
+    ]
+  },
+  {
+    "id": "seafood-stir-fry",
+    "name": "Seafood Stir Fry",
+    "category": "Stir-Fry",
+    "price": 17,
+    "currency": "CAD",
+    "ingredients": [
+      "udon noodles",
+      "tiger shrimp",
+      "mussels",
+      "scallops",
+      "seasonal vegetables",
+      "spicy hoisin sauce"
+    ],
+    "description": "Udon noodles with tiger shrimp, mussels, scallops and seasonal vegetables in spicy hoisin sauce. The individual seasonal vegetables are not named.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "chicken-veggie-stir-fry",
+    "name": "Chicken + Veggie Stir Fry",
+    "category": "Stir-Fry",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "Shanghai noodles",
+      "chicken",
+      "cauliflower",
+      "carrots",
+      "onions",
+      "peppers",
+      "broccoli",
+      "cashews",
+      "spicy hoisin sauce"
+    ],
+    "description": "Shanghai noodles with chicken, cauliflower, carrots, onions, peppers, broccoli and cashews in spicy hoisin sauce. Marked mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "pad-thai",
+    "name": "Pad Thai",
+    "category": "Stir-Fry",
+    "price": 17,
+    "currency": "CAD",
+    "ingredients": [
+      "rice noodles",
+      "chicken",
+      "shrimp",
+      "fried tofu",
+      "egg",
+      "bean sprouts",
+      "cashews",
+      "scallions",
+      "coriander"
+    ],
+    "description": "Rice noodles with chicken, shrimp, fried tofu, egg and bean sprouts, accompanied by cashews, scallions and coriander. Marked gluten-free; sauce ingredients are not provided.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "gluten-free"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "jungle-curry",
+    "name": "Jungle Curry",
+    "category": "Rice Bowls",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "ground chicken",
+      "cabbage slaw",
+      "corn",
+      "bamboo shoots",
+      "Thai basil",
+      "kaffir lime leaf",
+      "rice"
+    ],
+    "description": "Ground chicken curry with rice, cabbage slaw, corn, bamboo shoots, Thai basil and kaffir lime leaf. Marked gluten-free and mildly spicy; a separate curry sauce recipe is not supplied.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "gluten-free"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "bibim-bop",
+    "name": "Bibim + Bop",
+    "category": "Rice Bowls",
+    "price": 15.5,
+    "currency": "CAD",
+    "ingredients": [
+      "fried egg",
+      "spicy tofu",
+      "mushrooms",
+      "carrots",
+      "bean sprouts",
+      "gai lan",
+      "radish",
+      "gochujang",
+      "sesame oil",
+      "rice"
+    ],
+    "description": "Rice topped with fried egg, spicy tofu, mushrooms, carrots, bean sprouts, gai lan and radish, with gochujang and sesame oil. Marked vegetarian and mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "general-tao-chicken",
+    "name": "General Tao Chicken",
+    "category": "Rice Bowls",
+    "price": 16,
+    "currency": "CAD",
+    "ingredients": [
+      "deep-fried chicken",
+      "cauliflower",
+      "broccoli",
+      "carrots",
+      "peppers",
+      "sweet chili hoisin sauce",
+      "rice"
+    ],
+    "description": "Deep-fried chicken served with rice, cauliflower, broccoli, carrots and peppers, accompanied by sweet chili hoisin sauce. Marked mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "japengo",
+    "name": "Japengo",
+    "category": "Rice Bowls",
+    "price": 15.5,
+    "currency": "CAD",
+    "ingredients": [
+      "spicy tofu",
+      "Japanese eggplant",
+      "bok choy",
+      "fried shallots",
+      "black bean garlic sauce",
+      "rice"
+    ],
+    "description": "Rice with spicy tofu, Japanese eggplant and bok choy, accompanied by fried shallots and black bean garlic sauce. Marked vegan and mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "vegan"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "beef-rendang",
+    "name": "Beef Rendang",
+    "category": "Rice Bowls",
+    "price": 17,
+    "currency": "CAD",
+    "ingredients": [
+      "slow-braised beef",
+      "spicy coconut curry sauce",
+      "broccoli",
+      "fried shallots",
+      "rice"
+    ],
+    "description": "Slow-braised beef in spicy coconut curry sauce with broccoli, fried shallots and rice. The menu describes the sauce as spicy but assigns the dish a mild chili rating.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "deep-fried-sticky-ribs",
+    "name": "Deep Fried Sticky Ribs",
+    "category": "Shareables",
+    "price": 14,
+    "currency": "CAD",
+    "ingredients": [
+      "baby back pork ribs",
+      "scallions",
+      "toasted sesame",
+      "BBQ sauce"
+    ],
+    "description": "Deep-fried baby back pork ribs with barbecue sauce, scallions and toasted sesame. The barbecue sauce recipe is not listed.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "popcorn-chicken",
+    "name": "Popcorn Chicken",
+    "category": "Shareables",
+    "price": 13,
+    "currency": "CAD",
+    "ingredients": [
+      "crispy fried chicken",
+      "chili plum sauce"
+    ],
+    "description": "Crispy fried chicken accompanied by chili plum sauce. No rice or noodles are listed with this sharing dish.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "crispy-eggplants",
+    "name": "Crispy Eggplants",
+    "category": "Shareables",
+    "price": 12,
+    "currency": "CAD",
+    "ingredients": [
+      "battered eggplant",
+      "togarashi spice",
+      "cashews",
+      "sweet and sour sauce"
+    ],
+    "description": "Eight pieces of battered eggplant with togarashi spice, cashews and sweet-and-sour sauce. Marked vegetarian; the batter recipe is not supplied.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": 8,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "pan-fried-pork-gyoza",
+    "name": "Pan Fried Pork Gyoza",
+    "category": "Shareables",
+    "price": 12,
+    "currency": "CAD",
+    "ingredients": [
+      "pork and vegetable-filled dumplings",
+      "ponzu citrus sauce"
+    ],
+    "description": "Eight pan-fried dumplings filled with pork and vegetables, accompanied by ponzu citrus sauce. The vegetables and dumpling-wrapper ingredients are not individually listed.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": 8,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "french-fries",
+    "name": "French Fries",
+    "category": "Shareables",
+    "price": 10,
+    "currency": "CAD",
+    "ingredients": [
+      "French fries"
+    ],
+    "description": "French fries, marked vegetarian. The portion size, seasoning, cooking oil and sauces are not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": [
+      "French fries are named in the dish title; no separate ingredient list is printed."
+    ]
+  },
+  {
+    "id": "side-of-fries",
+    "name": "Side of Fries",
+    "category": "Shareables",
+    "price": 6,
+    "currency": "CAD",
+    "ingredients": [
+      "fries"
+    ],
+    "description": "Fries offered as a side dish, marked vegetarian. The exact portion size, seasoning, cooking oil and sauces are not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": [
+      "Fries are named in the dish title; no separate ingredient list is printed."
+    ]
+  },
+  {
+    "id": "vegetable-spring-rolls",
+    "name": "Vegetable Spring Rolls",
+    "category": "Shareables",
+    "price": 2.5,
+    "currency": "CAD",
+    "ingredients": [
+      "vegetable spring rolls"
+    ],
+    "description": "Two vegetable spring rolls, marked vegetarian. The individual filling vegetables, wrapper ingredients, preparation method and sauces are not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": 2,
+    "allergenInformation": null,
+    "notes": [
+      "Vegetable spring rolls are named in the title; no separate ingredient list is printed."
+    ]
+  },
+  {
+    "id": "red-bean-paste-sesame-balls",
+    "name": "Red Bean Paste Sesame Balls",
+    "category": "Sweets",
+    "price": 8,
+    "currency": "CAD",
+    "ingredients": [
+      "red bean paste",
+      "sesame balls"
+    ],
+    "description": "Four sesame balls with red bean paste. The dough recipe and preparation method are not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": 4,
+    "allergenInformation": null,
+    "notes": [
+      "Ingredients are identified by the dish title; no separate ingredient list is printed."
+    ]
+  },
+  {
+    "id": "ice-cream",
+    "name": "Ice Cream",
+    "category": "Sweets",
+    "price": 4,
+    "currency": "CAD",
+    "ingredients": [
+      "ice cream"
+    ],
+    "description": "Ice cream. Ask staff about available flavours, serving size, ingredients and toppings; these are not specified on the menu.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": [
+      "The menu says \"Ask us\". Ice cream is named in the title; no flavour or ingredient list is printed."
+    ]
+  },
+  {
+    "id": "general-bao",
+    "name": "General Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "fried chicken",
+      "pickles",
+      "togarashi mayonnaise",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun filled with fried chicken, pickles, togarashi mayonnaise, cilantro and sesame seeds. Marked mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "take-a-bao",
+    "name": "Take a Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "beef brisket",
+      "pickled vegetables",
+      "house BBQ sauce",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun with beef brisket, pickled vegetables, house barbecue sauce, cilantro and sesame seeds. The individual pickled vegetables and sauce recipe are not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "bbq-pork-bao",
+    "name": "BBQ Pork Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "BBQ pulled pork",
+      "pickled vegetables",
+      "house BBQ sauce",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun filled with barbecue pulled pork, pickled vegetables, house barbecue sauce, cilantro and sesame seeds. The pickled vegetable selection is not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "king-cole-duck-bao",
+    "name": "King Cole Duck Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "pulled duck",
+      "pickled red onions",
+      "orange and sambal mayonnaise",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun with pulled duck, pickled red onions, orange and sambal mayonnaise, cilantro and sesame seeds. Marked mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": [
+      "The source uses the King Cole trademark symbol in the dish name."
+    ]
+  },
+  {
+    "id": "shrimp-bao",
+    "name": "Shrimp Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "battered shrimp",
+      "coleslaw",
+      "togarashi mayonnaise",
+      "cilantro",
+      "black sesame seeds",
+      "white sesame seeds"
+    ],
+    "description": "A steamed bun filled with battered shrimp, coleslaw, togarashi mayonnaise, cilantro, and black and white sesame seeds. Marked mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "curtsy-bao",
+    "name": "Curtsy Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "mushrooms",
+      "pickles",
+      "fried shallots",
+      "house BBQ sauce",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun with mushrooms, pickles, fried shallots, house barbecue sauce, cilantro and sesame seeds. Marked vegan.",
+    "spiceLevel": null,
+    "dietaryLabels": [
+      "vegan"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "eggplant-bao",
+    "name": "Eggplant Bao",
+    "category": "Bao",
+    "price": 6.5,
+    "currency": "CAD",
+    "ingredients": [
+      "steamed bun",
+      "battered eggplant",
+      "pickles",
+      "fried shallots",
+      "togarashi mayonnaise",
+      "cilantro",
+      "sesame seeds"
+    ],
+    "description": "A steamed bun filled with battered eggplant, pickles, fried shallots, togarashi mayonnaise, cilantro and sesame seeds. Marked vegetarian and mildly spicy.",
+    "spiceLevel": "mild",
+    "dietaryLabels": [
+      "vegetarian"
+    ],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "chicken-bites",
+    "name": "Chicken Bites",
+    "category": "Children's Menu",
+    "price": 10,
+    "currency": "CAD",
+    "ingredients": [
+      "crispy fried chicken",
+      "fries",
+      "plum sauce"
+    ],
+    "description": "A children's meal with crispy fried chicken, fries and plum sauce. The portion size is not specified.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  },
+  {
+    "id": "kids-ramen-bowl",
+    "name": "Ramen Bowl",
+    "category": "Children's Menu",
+    "price": 10,
+    "currency": "CAD",
+    "ingredients": [
+      "ramen noodles",
+      "beef brisket",
+      "pork broth"
+    ],
+    "description": "A children's ramen noodle bowl with beef brisket in pork broth. The dish contains pork broth even though its meat topping is beef.",
+    "spiceLevel": null,
+    "dietaryLabels": [],
+    "portionPieces": null,
+    "allergenInformation": null,
+    "notes": []
+  }
+]
